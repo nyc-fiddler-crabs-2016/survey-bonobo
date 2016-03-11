@@ -45,6 +45,10 @@ get '/users/:id/edit' do
   erb :'/users/edit'
 end
 
+put '/users/:id' do
+  # user =
+end
+
 delete '/users/:id' do
   user = User.find_by(id: params[:id])
   user.destroy
