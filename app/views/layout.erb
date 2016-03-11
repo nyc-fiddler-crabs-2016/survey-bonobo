@@ -24,8 +24,10 @@
       <a href="/users/<%=current_user.id%>">Profile</a>
       <a href="/logout">logout</a>
       <%else%>
-      <a href="/users/new">register</a>
-      <a href="/login">login</a>
+      <a id="register-button" href="/users/new">register</a>
+      <a id="login-button" href="/login">login</a>
+      <span id="register-anchor"></span>
+      <span id="login-anchor"></span>
     <%end%>
   </nav>
   <%= yield %>
