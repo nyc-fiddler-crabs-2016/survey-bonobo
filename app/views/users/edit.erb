@@ -6,7 +6,8 @@
 <br>
 <br>
 
-<form name="edit_profile" action="/users/edit" method="POST">
+<form name="edit_profile" action="/users/<%= @user.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
   username:
   <input type="text" name="username" value="<%= @user.username %>">
   <br>

@@ -12,7 +12,7 @@
   <a href="/users/<%=@user.id%>/edit">Edit Your Profile</a>
 </div>
 
-<form name="delete" action="/users" method="POST">
+<form name="delete" action="/users/<%=@user.id%>" method="POST">
   <input type="hidden" name="_method" value="DELETE">
   <input type="submit" value="destroy">
 </form>

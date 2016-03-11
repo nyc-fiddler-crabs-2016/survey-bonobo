@@ -10,7 +10,7 @@ post '/login' do
     redirect "/users/#{@user.id}"
   else
     # Right now the error messages is a string in an array
-    @errors = @user.errors.full_messages
+    @errors = 'Invalid username or password!'
     erb :'/users/login'
   end
 end
