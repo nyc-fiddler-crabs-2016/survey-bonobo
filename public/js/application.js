@@ -29,4 +29,28 @@ $(document).ready(function() {
     //  $("new-question").append(//new choices form);
     })
   })
+  $('#login-button').on('click', function(event){
+    event.preventDefault();
+
+    var arguments = {
+      type: 'GET',
+      url: '/login',
+      data: $(this).serialize()
+    }
+    $.ajax(arguments).done(function(response){
+    $("#login-anchor").html(response).toggle()
+    })
+  })
+  $('#register-button').on('click', function(event){
+    event.preventDefault();
+
+    var arguments = {
+      type: 'GET',
+      url: '/users/new',
+      data: $(this).serialize()
+    }
+    $.ajax(arguments).done(function(response){
+      $("#register-anchor").html(response).toggle()
+    })
+  })
 });

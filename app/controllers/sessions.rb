@@ -1,6 +1,6 @@
 #session controller
 get '/login' do
-  erb :'/users/login'
+  erb :'/users/login', layout: false
 end
 
 post '/login' do
@@ -10,7 +10,7 @@ post '/login' do
     redirect "/users/#{@user.id}"
   else
     # Right now the error messages is a string in an array
-    @errors = 'Invalid username or password!'
+    @errors = 'Phil is so dissapointed in you...'
     erb :'/users/login'
   end
 end
