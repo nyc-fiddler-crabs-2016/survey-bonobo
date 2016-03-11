@@ -14,7 +14,7 @@ $(document).ready(function() {
 
       });
   });
-  $('body').on('submit', '#new-question', function(event){
+  $('.container').on('submit', '#new-question', function(event){
     event.preventDefault();
     var url = "/questions";
     var data = $(this).serialize();
@@ -29,30 +29,36 @@ $(document).ready(function() {
     //  $("new-question").append(//new choices form);
     })
   })
-  $('#login-button').on('click', function(event){
-    event.preventDefault();
 
-    var arguments = {
-      type: 'GET',
-      url: '/login',
-      data: $(this).serialize()
-    }
-    $.ajax(arguments).done(function(response){
-    $("#login-anchor").html(response).toggle()
-    $("#register-anchor").hide();
-    })
-  })
-  $('#register-button').on('click', function(event){
+  $('.container').on('submit', '#new-choice', function(event){
     event.preventDefault();
-
-    var arguments = {
-      type: 'GET',
-      url: '/users/new',
-      data: $(this).serialize()
-    }
-    $.ajax(arguments).done(function(response){
-      $("#register-anchor").html(response).toggle()
-      $("#login-anchor").hide();
+    var url = "/choices";
+    var data = $(this).serialize();
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      dataType: "HTML"
+    }).done(function(response){
+      $("#new-choice").hide();
+      $(".container").append(response);
     })
-  })
+  });
+  $('.container').on('submit', '.add-new-choice', function(event){
+    event.preventDefault();
+    var url = "/choices";
+    var data = $(this).serialize();
+    $.ajax({
+      type: 'GET',
+      url: url,
+      data: data,
+      dataType: 'HTML'
+    }).done(function(response){
+      $("#choices-container").append(response);
+
+
+
+    })
+  });
+
 });
