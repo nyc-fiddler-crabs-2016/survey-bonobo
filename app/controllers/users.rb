@@ -6,6 +6,7 @@ end
 
 post '/login' do
   @user = User.find_by(username: params[:username])
+  session[:user_id] = @user.id
   redirect '/users'
 end
 
@@ -42,4 +43,10 @@ end
 get '/users/:id/edit' do
   @user = User.find_by(id: params[:id])
   erb :'/users/edit'
+end
+
+delete '/users/:id' do
+  user = User.find_by(id: params[:id])
+  user.destroy
+    redirect '/users'
 end
