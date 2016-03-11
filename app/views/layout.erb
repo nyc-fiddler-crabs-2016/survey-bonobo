@@ -19,15 +19,18 @@
 </head>
 <body>
   <nav>
+    <a href="/">home</a>
     <%if logged_in?%>
-      <a href="/">home</a>
       <a href="/users/<%=current_user.id%>">Profile</a>
       <a href="/logout">logout</a>
       <%else%>
       <a href="/users/new">register</a>
+
       <a href="/login">login</a>
     <%end%>
   </nav>
-  <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
 </body>
 </html>
