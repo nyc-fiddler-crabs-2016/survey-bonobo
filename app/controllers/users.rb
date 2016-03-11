@@ -46,7 +46,9 @@ get '/users/:id/edit' do
 end
 
 put '/users/:id' do
-  # user =
+  user = User.find_by(id: params[:id])
+  user.update(username: params[:username],password: params[:password], email: params[:email])
+  redirect "/users/#{user.id}"
 end
 
 delete '/users/:id' do
