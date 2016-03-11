@@ -1,0 +1,23 @@
+<h1>Edit Your Account</h1>
+
+<% if @errors %>
+  <%= @errors %>
+<% end %>
+<br>
+<br>
+
+<form name="edit_profile" action="/users/edit" method="POST">
+  username:
+  <input type="text" name="username" value="<%= @user.username %>">
+  <br>
+  password:
+  <input type="password" name="password">
+  <br>
+  email:
+  <input type="text" name="email" value="<%= @user.email %>">
+  <br>
+  <input type="submit" value="change">
+</form>
+<br>
+
+<a href="/users/<%= @user.id %>">Back to Profile</a>
