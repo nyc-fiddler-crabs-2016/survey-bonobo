@@ -9,8 +9,8 @@ end
 
 
 post '/surveys' do
-  @survey = Survey.create(params[:survey])
-  erb :'surveys/index'
+  @survey = Survey.create(name: params[:name], description: params[:description], author_id: current_user.id)
+  erb :'surveys/_show', layout: false
 end
 
 
