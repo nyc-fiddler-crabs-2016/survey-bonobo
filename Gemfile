@@ -26,4 +26,5 @@ group :test, :development do
   gem 'faker'
 end
 
-gem 'bcrypt'
+gem 'bcrypt', '~> 3.1.7'
+
