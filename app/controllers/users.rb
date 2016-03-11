@@ -1,5 +1,19 @@
 #user controller
 
+get '/login' do
+  erb :"/users/login"
+end
+
+post '/login' do
+  @user = User.find_by(username: params[:username])
+  redirect '/users'
+end
+
+get '/logout' do
+  session.clear
+  redirect '/'
+end
+
 get '/users' do
   # this will eventually be removed, replaced with a redirect to homepage
   erb :'/users/index'

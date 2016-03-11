@@ -1,0 +1,5 @@
+user = User.create(username: "tim", password: "password", email:"ryan@charlie.com")
+survey = Survey.create(name: "Elephants", author_id: user.id)
+question = Question.create(content:"What is an Elephant to you?", survey_id: survey.id)
+Choice.create(content:"It all started with my mother...", question_id: question.id, reader_id: 1)
+Choice.create(content:"Large, Bold, Grey", question_id: question.id, reader_id: 1)
