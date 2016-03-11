@@ -9,6 +9,7 @@ $(document).ready(function() {
     }
     $.ajax(arguments).done(function(response){
     $("#login-anchor").html(response).toggle()
+    $("#register-anchor").hide();
     })
   })
   $('#register-button').on('click', function(event){
@@ -21,6 +22,7 @@ $(document).ready(function() {
     }
     $.ajax(arguments).done(function(response){
       $("#register-anchor").html(response).toggle()
+      $("#login-anchor").hide();
     })
   })
 
