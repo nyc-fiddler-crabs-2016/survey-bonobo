@@ -30,7 +30,7 @@ $(document).ready(function() {
     })
   })
 
-  $('.container').on('submit', '#new-choice', function(event){
+  $('.container').on('submit', '.new-choice', function(event){
     event.preventDefault();
     var url = "/choices";
     var data = $(this).serialize();
@@ -40,8 +40,19 @@ $(document).ready(function() {
       data: data,
       dataType: "HTML"
     }).done(function(response){
-      $("#new-choice").hide();
+      $(".new-choice").hide();
+      $('.add-new-choice').hide();
       $(".container").append(response);
+      var questionUrl = "/questions/new";
+      var questionData = $(this).serialize();
+      $.ajax({
+        type: "GET",
+        url: questionUrl,
+        data: questionData,
+        dataType: "HTML"
+      }).done(function(response){
+        $(".container").append(response);
+      })
     })
   });
   $('.container').on('submit', '.add-new-choice', function(event){
@@ -53,12 +64,34 @@ $(document).ready(function() {
       url: url,
       data: data,
       dataType: 'HTML'
-    }).done(function(response){
-      $("#choices-container").append(response);
-
+    }).done(function(){
+      $("#choices-container").prepend(response);
 
 
     })
   });
+
+  // $('.container').on('submit', '.new-choice-button'), function(event){
+  //   event.preventDefault();
+  //   var url = '/choices'
+  //   var data = $this.serialize();
+  //   $.ajax({
+  //     type: 'POST',
+  //     url: url,
+  //     data: data,
+  //     dataType: 'HTML'
+  //   }).done(function(response){
+  //     $('.add-new-choice').hide();
+  //     debugger
+  //     $('.container').append(response);
+
+  //   })
+  // }
+
+  // $('.new-choice-button').on("click", function(){
+  //   $(".new-choice").each(function(){
+  //     $(this).submit();
+  //   })
+  // });
 
 });

@@ -1,1 +1,5 @@
-<h2><%= @choice.content %></h2>
+<ul>
+  <% @choices.each do |choice| %>
+    <li><%= choice.content %></li>
+  <%end%>
+</ul>
