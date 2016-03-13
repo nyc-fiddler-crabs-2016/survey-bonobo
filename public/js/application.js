@@ -66,30 +66,5 @@ $(document).ready(function() {
       })
     })
   });
+  });
 
-
-
-  // $('.container').on('submit', '.new-choice-button'), function(event){
-  //   event.preventDefault();
-  //   var url = '/choices'
-  //   var data = $this.serialize();
-  //   $.ajax({
-  //     type: 'POST',
-  //     url: url,
-  //     data: data,
-  //     dataType: 'HTML'
-  //   }).done(function(response){
-  //     $('.add-new-choice').hide();
-  //     debugger
-  //     $('.container').append(response);
-
-  //   })
-  // }
-
-  // $('.new-choice-button').on("click", function(){
-  //   $(".new-choice").each(function(){
-  //     $(this).submit();
-  //   })
-  // });
-
-});
