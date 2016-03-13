@@ -1,3 +1,9 @@
+<div id="final-submit">
+  <% if @survey %>
+  <a href="/surveys/<%=@survey.id%>">Submit the survey!</a>
+  <% end %>
+</div>
+
 <h2><%= @survey.name %></h2>
 <p><%= @survey.description %></p>
 <%= erb :'questions/_question_form' %>

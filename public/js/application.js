@@ -14,7 +14,7 @@ $(document).ready(function() {
 
       });
   });
-  $('body').on('submit', '#new-question', function(event){
+  $('.container').on('submit', '#new-question', function(event){
     event.preventDefault();
     var url = "/questions";
     var data = $(this).serialize();
@@ -29,39 +29,42 @@ $(document).ready(function() {
     //  $("new-question").append(//new choices form);
     })
   })
-  $('#login-button').on('click', function(event){
+
+  $('.container').on('click', '.add-new-choice', function(event){
     event.preventDefault();
+    var counter = Math.floor(Math.random() * 10000) + 1
+    $('<input>').attr({
+      type: 'text',
+      name: 'choices[content' + counter + ']',
+    }).appendTo('.new-choice');
+    counter ++;
+  });
 
-    var arguments = {
-      type: 'GET',
-      url: '/login',
-      data: $(this).serialize()
-    }
-    $.ajax(arguments).done(function(response){
-    $("#login-anchor").html(response).toggle()
-    $("#register-anchor").hide();
-    })
-  })
-  $('#register-button').on('click', function(event){
+
+  $('.container').on('submit', '.new-choice', function(event){
     event.preventDefault();
-
-    var arguments = {
-      type: 'GET',
-      url: '/users/new',
-      data: $(this).serialize()
-    }
-    $.ajax(arguments).done(function(response){
-      $("#register-anchor").html(response).toggle()
-      $("#login-anchor").hide();
+    var url = "/choices";
+    var data = $(this).serialize();
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      dataType: "HTML"
+    }).done(function(response){
+      $(".new-choice").hide();
+      $('.add-new-choice').hide();
+      $("#choices-container").append(response);
+      var questionUrl = "/questions/new";
+      var questionData = $(this).serialize();
+      $.ajax({
+        type: "GET",
+        url: questionUrl,
+        data: questionData,
+        dataType: "HTML"
+      }).done(function(response){
+        $(".container").append(response);
+      })
     })
-  })
-  // var counter = 1
-  // $(".survey-container").on("submit","question"+counter, function(){
-  //     counter ++
-  //     $("#question" + counter ).show();
-  //     $("#question" + (counter - 1)).hide();
-  // })
-
-});
-
+  });
+  });
 
