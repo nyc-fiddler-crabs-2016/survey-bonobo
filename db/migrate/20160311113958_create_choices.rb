@@ -4,7 +4,7 @@ class CreateChoices < ActiveRecord::Migration
         t.string :content, null: false
         t.integer :question_id, null: false
         t.boolean :selected, default: false
-        t.integer :reader_id, null: false
+        t.integer :reader_id
 
         t.timestamps null:false
     end

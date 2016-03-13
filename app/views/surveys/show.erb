@@ -1,0 +1,21 @@
+asd;lfja;wkejrhaqklwjehflkajhfklvahwejfhba,jwerbva,mdsnfbdfn
+
+
+<h2><%= @survey.name %></h2>
+<p><%= @survey.description %></p>
+
+<div class="survey-container">
+<%@survey.question do |question|%>
+  <h4><%=question.content%></h4>
+    <%question.choices.each do |choice|%>
+      <form id="question<%=question.id%>" name="answer_question" action="/choices/<%=choice.id%>" method="POST">
+      <input type="hidden" name="_method" value="PUT">
+      <input type="hidden" name="question_id" value="<%= question.id %>">
+      <input type="radio" name="content" value="<%=choice.content%>">
+      <input type="hidden" name="selected" value="<%=true%>">
+      <br><br>
+    <%end%>
+      <input type="submit" value="submit">
+</form>
+<%end%>
+</div>
