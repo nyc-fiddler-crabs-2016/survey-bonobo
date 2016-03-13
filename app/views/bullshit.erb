@@ -1,1 +1,5 @@
-<h1>Index page!</h1>
+<%if logged_in?%>
+<% redirect '/surveys' %>
+<% else %>
+Welcome. Sign up to create and/or take a survey.
+<% end %>

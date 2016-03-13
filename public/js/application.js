@@ -30,6 +30,17 @@ $(document).ready(function() {
     })
   })
 
+  $('.container').on('click', '.add-new-choice', function(event){
+    event.preventDefault();
+    var counter = Math.floor(Math.random() * 10000) + 1
+    $('<input>').attr({
+      type: 'text',
+      name: 'choices[content' + counter + ']',
+    }).appendTo('.new-choice');
+    counter ++;
+  });
+
+
   $('.container').on('submit', '.new-choice', function(event){
     event.preventDefault();
     var url = "/choices";
@@ -42,7 +53,7 @@ $(document).ready(function() {
     }).done(function(response){
       $(".new-choice").hide();
       $('.add-new-choice').hide();
-      $(".container").append(response);
+      $("#choices-container").append(response);
       var questionUrl = "/questions/new";
       var questionData = $(this).serialize();
       $.ajax({
@@ -55,21 +66,8 @@ $(document).ready(function() {
       })
     })
   });
-  $('.container').on('submit', '.add-new-choice', function(event){
-    event.preventDefault();
-    var url = "/choices";
-    var data = $(this).serialize();
-    $.ajax({
-      type: 'GET',
-      url: url,
-      data: data,
-      dataType: 'HTML'
-    }).done(function(){
-      $("#choices-container").prepend(response);
 
 
-    })
-  });
 
   // $('.container').on('submit', '.new-choice-button'), function(event){
   //   event.preventDefault();

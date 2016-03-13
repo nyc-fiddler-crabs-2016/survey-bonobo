@@ -1,13 +1,12 @@
+<ul>
+  <% @choices.each do |choice| %>
+    <li><%= choice.content %></li>
+  <%end%>
+</ul>
+
 <form class="new-choice" action="/choices" method="POST">
-  <input type="text" name="choices[content]" placeholder="Choice to the question">
+  <input type="text" name="content" placeholder="Choice to the question">
   <input type="submit" class="add-new-choice" value="+">
   <input class="new-choice-button" type="submit" value="submit">
 
 </form>
-
-
-<form id="choices-container" action="/choices" method="POST">
-
-</form>
-
-
