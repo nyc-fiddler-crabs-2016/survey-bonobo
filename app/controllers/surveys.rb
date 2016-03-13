@@ -15,8 +15,9 @@ post '/surveys' do
 end
 
 
-get '/surveys/:id' do
-  @survey = Survey.find_by(id: params[:id])
+get '/surveys/:survey_id/questions/:id' do
+  @survey = Survey.find_by(id: params[:survey_id])
+  @question = Question.find_by(id: params[:id])
   erb :'surveys/show'
 end
 

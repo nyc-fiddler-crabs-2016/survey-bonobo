@@ -55,4 +55,13 @@ $(document).ready(function() {
       $("#login-anchor").hide();
     })
   })
+  // var counter = 1
+  // $(".survey-container").on("submit","question"+counter, function(){
+  //     counter ++
+  //     $("#question" + counter ).show();
+  //     $("#question" + (counter - 1)).hide();
+  // })
+
 });
+
+
